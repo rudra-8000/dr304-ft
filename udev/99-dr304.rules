@@ -1,0 +1,6 @@
+# D.R304 F/T sensor: UT-891 USB-RS485 adapter (Silicon Labs CP210x, 10c4:ea60).
+# Creates /dev/dr304 (group dialout, rw for group) and enables low-latency mode.
+# If you have several CP210x devices, add  ATTRS{serial}=="<serial>"  (see: udevadm info -a -n /dev/ttyUSBx | grep serial)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="dr304", GROUP="dialout", MODE="0660", RUN+="/bin/setserial /dev/%k low_latency"
+# Stop ModemManager from probing the port (it sends AT commands to new serial devices).
+ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", ENV{ID_MM_DEVICE_IGNORE}="1"

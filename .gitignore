@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.venv/
+venv/
+
+# recordings and per-site files never belong in the repo
+*.csv
+*.csv.json
+das_dump.bin
+sensor.json
+SENSOR_PROFILE.md

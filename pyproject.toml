@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dr304-ft"
+version = "0.2.0"
+description = "Linux Python SDK, fixed-rate streamer and CSV recorder for the D.R304 six-axis force/torque transmitter"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["force-torque", "F/T sensor", "D.R304", "modbus", "robotics", "data collection"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Hardware :: Hardware Drivers",
+]
+dependencies = ["pyserial>=3.4"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+dr304 = "dr304.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dr304 = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
